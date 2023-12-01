@@ -18,19 +18,19 @@ for fail in os.listdir(kataloog):
                 "--report", ilus_nimi + ".std2022.kreport",
                 failid
             ]
-            result = subprocess.Popen(kraken2, stdout=subprocess.PIPE, stderr=s$
+            result = subprocess.Popen(kraken2, stdout=subprocess.PIPE, stderr=subprocess.PIPE)  # Fixed line
 
             out, err = result.communicate()
 
             print("Standard Output:")
-            print(out)
+            print(out.decode())  # Added decode() to convert bytes to string
 
             print("Standard Error:")
-            print(err)
+            print(err.decode())  # Added decode() to convert bytes to string
 
             if result.returncode == 0:
                 print("Process completed successfully.")
             else:
                 print("Error1")
         except subprocess.CalledProcessError as e:
-            print("Error:")
+            print("Error:", e)
