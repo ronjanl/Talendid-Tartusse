@@ -18,13 +18,13 @@ with open(aadress, "r") as f:
         if otsitav in line.lower():
             lugemite_list.append(line.split()[1])
 
-print(f"leiti {len(lugemite_list)} {otsitav} lugemit")
+print("leiti " + str(len(lugemite_list)) + " " + otsitav + " lugemit")
 
 aadress_fastq = "/mambakodu/mremm/talendid/test." + sys.argv[1] + ".fastq"
 
 kirjuta_list = []
 
-lugemeid_läbitud = 0
+lugemeid_l2bitud = 0
 
 #võtab fastq failist vastavate lugemite osad
 with open(aadress_fastq, "r") as f:
@@ -33,9 +33,9 @@ with open(aadress_fastq, "r") as f:
     for i in range(len(lines)):
         line = lines[i]
         if any(lugem in line for lugem in lugemite_list):
-            lugemeid_läbitud += 1
+            lugemeid_l2bitud += 1
             kirjuta_list.extend(lines[i:i+2])
-            print(lugemeid_läbitud//2)
+            print(lugemeid_l2bitud//2)
 
 
 print("kirjutab uut fastq faili")
